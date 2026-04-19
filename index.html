@@ -198,6 +198,43 @@
       background: #000;
       outline: none;
     }
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      background: var(--whoop-mid);
+      cursor: pointer;
+    }
+    .video-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(232,0,29,0.0);
+      transition: background 0.2s;
+      z-index: 1;
+    }
+    .video-thumb:hover .video-thumb-overlay { background: rgba(232,0,29,0.12); }
+    .play-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--whoop-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .video-thumb:hover .play-btn { transform: scale(1.1); background: var(--whoop-red-dark); }
+    .play-triangle {
+      width: 0; height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 14px solid white;
+      margin-left: 3px;
+    }
     .video-info { padding: 18px; }
     .video-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; line-height: 1.4; }
     .video-desc { font-size: 12px; color: var(--whoop-muted); line-height: 1.55; }
@@ -311,19 +348,35 @@
   <div class="hero">
     <div class="hero-tag">VP of Communications · Candidate Application</div>
     <h1>BUILT FOR<br><span>WHOOP</span></h1>
-    <p class="hero-sub">A communications leader who speaks performance fluently — and builds the systems that move markets, shape culture, and protect the brand under pressure.</p>
+    <p class="hero-sub">For 7 years as CMO of Virgin Pulse, I led marketing for a 7.5M+ member health performance platform serving 24% of the Fortune 500 — growing subscribers, launching AI-driven products, navigating health data privacy, and building the enterprise pipeline that took us to $416M revenue at 100%+ Net ARR Retention. That's not adjacent experience. That's this job.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <span class="hero-meta-label">Candidate</span>
         <span class="hero-meta-value">Wendy Werve</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-label">Role</span>
-        <span class="hero-meta-value">VP of Communications</span>
+        <span class="hero-meta-label">Virgin Pulse tenure</span>
+        <span class="hero-meta-value">7 years · CMO</span>
       </div>
       <div class="hero-meta-item">
-        <span class="hero-meta-label">Prepared</span>
-        <span class="hero-meta-value">April 2026</span>
+        <span class="hero-meta-label">Lives on platform</span>
+        <span class="hero-meta-value">7.5M+</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Active customers</span>
+        <span class="hero-meta-value">4,000+</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Net ARR retention</span>
+        <span class="hero-meta-value">100%+</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">WHOOP biological age</span>
+        <span class="hero-meta-value">46.9 · at 57</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Featured WHOOP from stage</span>
+        <span class="hero-meta-value">6Sense CMO Summit · 100 CMOs</span>
       </div>
     </div>
   </div>
@@ -353,7 +406,13 @@
         </div>
       </div>
       <div class="video-card">
-        <video class="video-player" src="video2.mp4" controls preload="metadata"></video>
+        <iframe
+          class="video-player"
+          src="https://player.vimeo.com/video/462860647"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
         <div class="video-info">
           <div class="video-title">Communications philosophy</div>
           <div class="video-desc">How I think about brand narrative, earned media, and executive voice.</div>
@@ -366,6 +425,24 @@
           <div class="video-desc">A member story compilation — real people, real results, real proof of what the brand can do.</div>
         </div>
       </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="https://youtu.be/jaII5FMv9G8?si=b4YTCeDXFJrA8MYL" target="_blank" rel="noopener">
+          <div class="video-thumb-overlay"></div>
+          <img
+            src="https://img.youtube.com/vi/jaII5FMv9G8/hqdefault.jpg"
+            alt="Video thumbnail"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7;"
+          />
+          <div class="play-btn" style="position:relative;z-index:2;"><div class="play-triangle"></div></div>
+          <span style="position:absolute;bottom:10px;right:12px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.8);z-index:2;font-family:var(--font-body);background:rgba(0,0,0,0.5);padding:2px 7px;border-radius:3px;">YouTube ↗</span>
+        </a>
+        <div class="video-info">
+          <div class="video-title">Another campaign I'm proud of</div>
+          <div class="video-desc">Update this description to reflect what this campaign was and why it mattered.</div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -377,37 +454,37 @@
       <div class="phase">
         <div class="phase-num">30</div>
         <div class="phase-label">Days — Listen &amp; Map</div>
-        <div class="phase-theme">Understand the landscape before touching it</div>
+        <div class="phase-theme">I've walked into a $200M health platform before. Here's how I start.</div>
         <ul class="phase-items">
-          <li class="phase-item">Shadow every team that touches the brand — product, partnerships, athlete relations, social</li>
-          <li class="phase-item">Audit current PR cadence, agency relationships, and media coverage quality</li>
-          <li class="phase-item">Identify 3–5 under-leveraged story angles sitting in existing data</li>
-          <li class="phase-item">Map executive visibility: where is Will Ahmed showing up vs. where he should be</li>
-          <li class="phase-item">Build trust with comms team — understand what's blocked, what's brewing</li>
+          <li class="phase-item">Shadow every team that touches the brand — product, partnerships, athlete relations, social — same way I mapped Virgin Pulse's ecosystem on day one</li>
+          <li class="phase-item">Audit PR cadence, agency relationships, and media coverage quality against tier-1 benchmarks</li>
+          <li class="phase-item">Identify 3–5 under-leveraged data story angles — Virgin Pulse's best coverage came from member outcome data no competitor could replicate</li>
+          <li class="phase-item">Map Will Ahmed's current visibility footprint against where a founder at this stage should be showing up</li>
+          <li class="phase-item">Understand what the comms team needs to do their best work — remove the blockers fast</li>
         </ul>
       </div>
       <div class="phase">
         <div class="phase-num">60</div>
         <div class="phase-label">Days — Build &amp; Prioritize</div>
-        <div class="phase-theme">Establish infrastructure and a point of view</div>
+        <div class="phase-theme">Build the architecture. Set the standard.</div>
         <ul class="phase-items">
-          <li class="phase-item">Deliver a communications strategy brief to leadership — owned, earned, and executive</li>
-          <li class="phase-item">Establish editorial calendar aligned to product roadmap and cultural moments</li>
-          <li class="phase-item">Rationalize agency roster; set clear KPIs and accountability structures</li>
-          <li class="phase-item">Begin media relationship development — top 15 priority journalists and editors</li>
-          <li class="phase-item">Propose framework for crisis communications and spokesperson protocols</li>
+          <li class="phase-item">Deliver a full communications strategy brief — owned, earned, executive, and crisis — informed by the Virgin Pulse playbook adapted for WHOOP's stage</li>
+          <li class="phase-item">Stand up an editorial calendar tied to product roadmap, athlete moments, and research publish windows</li>
+          <li class="phase-item">Rationalize agency roster with clear KPIs — at Virgin Pulse this alone recovered significant budget that went back into earned media</li>
+          <li class="phase-item">Begin building the media relationship map — top 20 journalists and editors who should know WHOOP's data story cold</li>
+          <li class="phase-item">Draft the health data privacy communications framework — proactive narrative, not reactive damage control</li>
         </ul>
       </div>
       <div class="phase">
         <div class="phase-num">90</div>
         <div class="phase-label">Days — Activate &amp; Measure</div>
-        <div class="phase-theme">Launch something. Show what this function can do.</div>
+        <div class="phase-theme">Show what a seasoned communications function looks like in motion.</div>
         <ul class="phase-items">
-          <li class="phase-item">Execute first fully owned comms campaign from brief to coverage</li>
-          <li class="phase-item">Deliver monthly comms dashboard to leadership — share of voice, sentiment, tier-1 placements</li>
-          <li class="phase-item">Activate at least one earned media spike tied to a product or data story</li>
-          <li class="phase-item">Present 12-month communications roadmap with resourcing and investment ask</li>
-          <li class="phase-item">Assess team structure and surface any hiring or restructuring recommendations</li>
+          <li class="phase-item">Execute first fully owned comms campaign — from brief to coverage — with Virgin Pulse-caliber production standards</li>
+          <li class="phase-item">Launch monthly comms dashboard to leadership: share of voice, sentiment, tier-1 placements, enterprise narrative reach</li>
+          <li class="phase-item">Activate at least one research-driven earned media spike — the kind that generates pickup without a pitch</li>
+          <li class="phase-item">Present 12-month communications roadmap with resourcing ask rooted in benchmarks from scaling VP to $200M+</li>
+          <li class="phase-item">Deliver team structure assessment and any hiring recommendations to close capability gaps</li>
         </ul>
       </div>
     </div>
@@ -421,44 +498,44 @@
       <div class="strategy-card">
         <div class="strategy-icon">📡</div>
         <div class="strategy-card-title">Earned media as brand truth</div>
-        <div class="strategy-card-body">WHOOP's credibility lives in third-party validation. The strategy is to feed journalists with irresistible data stories — not press releases — and earn coverage that advertising can't buy.</div>
-        <div class="strategy-stat">Tier 1</div>
-        <div class="strategy-stat-label">target placement standard</div>
+        <div class="strategy-card-body">At Virgin Pulse my team generated 72% of total company pipeline and built a PR engine that turned member health outcomes into tier-1 coverage. The playbook: data stories, not press releases. Peer-reviewed research, not product announcements. WHOOP's data moat makes this even more powerful.</div>
+        <div class="strategy-stat">72%</div>
+        <div class="strategy-stat-label">pipeline from marketing · VP</div>
       </div>
       <div class="strategy-card">
         <div class="strategy-icon">🎙️</div>
-        <div class="strategy-card-title">Executive voice as a distribution channel</div>
-        <div class="strategy-card-body">Will Ahmed is one of the most credible voices in performance tech. The communications function should systematize that — turning his insights into a programmatic content engine across media, podcasts, and keynotes.</div>
-        <div class="strategy-stat">10×</div>
-        <div class="strategy-stat-label">executive reach potential</div>
+        <div class="strategy-card-title">Platform narrative as a strategic weapon</div>
+        <div class="strategy-card-body">I trademarked <em>Homebase for Health™</em> under my leadership at Virgin Pulse — a platform positioning that unified 7 acquisitions, 4,000+ enterprise clients, and 7.5M members under a single, defensible brand story. WHOOP needs the same: a narrative architecture that makes the AI coaching story, the athlete story, the enterprise story, and the data story feel like one coherent mission — not three different decks.</div>
+        <div class="strategy-stat">TM</div>
+        <div class="strategy-stat-label">Homebase for Health™ · owned it</div>
       </div>
       <div class="strategy-card">
         <div class="strategy-icon">📊</div>
         <div class="strategy-card-title">Data as the unfair advantage</div>
-        <div class="strategy-card-body">No fitness platform has WHOOP's longitudinal behavioral data at this scale. A research communications program — peer-reviewed, press-released, and athlete-validated — creates perpetual media gravity.</div>
-        <div class="strategy-stat">300M+</div>
-        <div class="strategy-stat-label">days of member data</div>
+        <div class="strategy-card-body">Virgin Pulse sat on 7.5M+ members' behavioral health data across 4,000+ employers — and I built the research communications program that turned it into perpetual media gravity. Peer-reviewed studies, press-released findings, employer-validated outcomes. WHOOP's data moat deserves the same treatment at consumer scale.</div>
+        <div class="strategy-stat">7.5M+</div>
+        <div class="strategy-stat-label">members · done this before</div>
       </div>
       <div class="strategy-card">
-        <div class="strategy-icon">🏆</div>
-        <div class="strategy-card-title">Athletes as proof points, not just logos</div>
-        <div class="strategy-card-body">The athlete roster is a narrative goldmine that's under-converted. Every partnership should yield a story — not just a photo. Comms should co-own athlete activation with partnerships.</div>
-        <div class="strategy-stat">Elite</div>
-        <div class="strategy-stat-label">sports + enterprise crossover</div>
+        <div class="strategy-icon">🏢</div>
+        <div class="strategy-card-title">Enterprise narrative as consumer credibility</div>
+        <div class="strategy-card-body">At Virgin Pulse I built the B2B pipeline story that reached 24% of the Fortune 500 and 4,000+ active customers — and watched enterprise wins lift consumer trust simultaneously. WHOOP Unite is an enormous story waiting to be told. B2B and consumer comms should be feeding each other, not running in parallel.</div>
+        <div class="strategy-stat">24%</div>
+        <div class="strategy-stat-label">Fortune 500 · at Virgin Pulse</div>
       </div>
       <div class="strategy-card">
         <div class="strategy-icon">🛡️</div>
-        <div class="strategy-card-title">Crisis readiness as a competitive edge</div>
-        <div class="strategy-card-body">Health data is sensitive. Privacy narratives evolve fast. WHOOP needs a standing playbook, scenario modeling, and a rapid response posture — before an incident, not after.</div>
+        <div class="strategy-card-title">Health data privacy — proactive, not reactive</div>
+        <div class="strategy-card-body">Managing the health data narrative for 5M+ members across regulated enterprise clients taught me exactly how fast trust can erode — and how to protect it before a headline forces your hand. WHOOP needs this posture built now, not after an incident.</div>
         <div class="strategy-stat">24hr</div>
         <div class="strategy-stat-label">response capability target</div>
       </div>
       <div class="strategy-card">
-        <div class="strategy-icon">🌍</div>
-        <div class="strategy-card-title">International narrative expansion</div>
-        <div class="strategy-card-body">As WHOOP scales globally, comms must localize without diluting. A tiered market strategy — with flagship stories adapted for regional media landscapes — extends reach without fragmenting brand.</div>
-        <div class="strategy-stat">Global</div>
-        <div class="strategy-stat-label">narrative architecture</div>
+        <div class="strategy-icon">🎤</div>
+        <div class="strategy-card-title">Owned events as thought leadership engines</div>
+        <div class="strategy-card-body">I produced Thrive Summit — Virgin Pulse's flagship annual conference — that grew to 1,000+ companies with speakers including Mel Robbins, Matthew Walker PhD, and Josh Bersin. An owned event at that scale is a brand credibility machine, a media moment, and a pipeline driver simultaneously. WHOOP has the ingredients to build something equivalent.</div>
+        <div class="strategy-stat">1,000+</div>
+        <div class="strategy-stat-label">companies · Thrive Summit</div>
       </div>
     </div>
   </div>
@@ -474,23 +551,30 @@
       </div>
       <div>
         <div class="bio-name">WENDY<br>WERVE</div>
-        <div class="bio-title-line">Communications leader · Builder · Storyteller</div>
+        <div class="bio-title-line">CMO · Virgin Pulse · 7 years leading global marketing for the only global health &amp; wellbeing SaaS platform</div>
         <div class="bio-body">
-          <!-- Replace this with your bio -->
-          Add your bio here. Speak to your philosophy, your track record, and what draws you to performance brands like WHOOP. Two or three paragraphs in this space reads well — keep it direct, specific, and personal.
+          I spent 7 years as CMO of Virgin Pulse — the only global SaaS company in digital health, wellbeing, and employee engagement — scaling to 7.5M+ lives on platform, 4,000+ enterprise customers including 24% of the Fortune 500, and $416M revenue at 15% CAGR with 100%+ Net ARR Retention. My team owned the full marketing function: product marketing, demand generation, ABM, field marketing, corporate communications, brand, creative, and an SDR team — generating 72% of total company pipeline.
+          <br><br>
+          I built the communications architecture that made a complex, regulated health data platform legible and trusted at scale — to CHROs, benefits leaders, health plans, and 7.5 million individual members across 190+ countries in 20 languages. I launched AI-driven products and told their story credibly. I produced the Thrive Summit, the industry's leading wellbeing conference attracting 1,000+ companies and world-class keynote speakers. I trademarked and launched <em>Homebase for Health™</em> — the platform positioning that unified the entire product narrative and became the company's core market identity. I managed the health data privacy narrative across HIPAA, GDPR, and SOC-regulated enterprise environments. And I led a full rebrand while the company was simultaneously integrating seven acquisitions.
+          <br><br>
+          I'm also a WHOOP member and genuine advocate. In 2025 I gave a keynote — <em>Biohacks, Blueberries &amp; Badassery</em> — at the 6Sense Empowered CMO Summit, an invite-only gathering of 100 CMOs from top B2B companies. I featured WHOOP by name as the foundational biohacking tool: <em>"Biohacking without biofeedback is just guesswork. Invest in a tracking device — WHOOP."</em> My WHOOP tells me my biological age is 46.9. I'm 57. I don't just understand this brand intellectually. I live it.
         </div>
         <div class="bio-stats">
           <div>
-            <div class="bio-stat-num">25+</div>
-            <div class="bio-stat-label">Years experience</div>
+            <div class="bio-stat-num">7.5M+</div>
+            <div class="bio-stat-label">Lives on platform</div>
           </div>
           <div>
-            <div class="bio-stat-num">12</div>
-            <div class="bio-stat-label">Major launches</div>
+            <div class="bio-stat-num">72%</div>
+            <div class="bio-stat-label">Pipeline from marketing</div>
           </div>
           <div>
-            <div class="bio-stat-num">3</div>
-            <div class="bio-stat-label">Rebrands led</div>
+            <div class="bio-stat-num">1,000+</div>
+            <div class="bio-stat-label">Companies at Thrive Summit</div>
+          </div>
+          <div>
+            <div class="bio-stat-num">20+</div>
+            <div class="bio-stat-label">Years B2B SaaS marketing</div>
           </div>
         </div>
       </div>
@@ -501,33 +585,33 @@
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-co">Company name</div>
-          <div class="timeline-role">Title — one-line impact statement</div>
-          <div class="timeline-date">2024 – Present</div>
+          <div class="timeline-co">Virgin Pulse</div>
+          <div class="timeline-role">CMO — Scaled the only global SaaS platform in digital health and employee wellbeing to 7.5M+ lives, 4,000+ enterprise customers (24% of Fortune 500), $416M revenue at 15% CAGR, 100%+ Net ARR Retention, 17x LTV/CAC. Trademarked and launched <em>Homebase for Health™</em> as the company's core market positioning. Led full rebrand, AI product launches, Thrive Summit (1,000+ companies), health data privacy narrative, and generated 72% of total company pipeline.</div>
+          <div class="timeline-date">7 years</div>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div>
-          <div class="timeline-co">Previous company</div>
-          <div class="timeline-role">Title — key achievement or scope</div>
-          <div class="timeline-date">2021 – 2024</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-co">Earlier role</div>
-          <div class="timeline-role">Title — key achievement or scope</div>
-          <div class="timeline-date">2017 – 2021</div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div>
-          <div class="timeline-co">Foundation role</div>
-          <div class="timeline-role">Where it started</div>
+          <div class="timeline-co">SumTotal &amp; Skillsoft</div>
+          <div class="timeline-role">VP Marketing — Enterprise SaaS learning and talent management platforms</div>
           <div class="timeline-date">Prior</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-co">Metastorm (OpenText) · Plateau Systems (SuccessFactors/SAP) · Appian</div>
+          <div class="timeline-role">Marketing leadership roles across enterprise SaaS, BPM, and talent management platforms</div>
+          <div class="timeline-date">Prior</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-co">webMethods (Software AG)</div>
+          <div class="timeline-role">Marketing leadership — enterprise integration and B2B SaaS</div>
+          <div class="timeline-date">Career foundation</div>
         </div>
       </div>
     </div>
