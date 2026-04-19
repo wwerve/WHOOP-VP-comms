@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wendy Covey · VP of Communications · WHOOP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --whoop-black: #0a0a0a;
+      --whoop-red: #e8001d;
+      --whoop-red-dark: #a80015;
+      --whoop-off-white: #f5f3ef;
+      --whoop-gray: #1a1a1a;
+      --whoop-mid: #2e2e2e;
+      --whoop-muted: #888;
+      --whoop-border: rgba(255,255,255,0.08);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--whoop-black);
+      color: var(--whoop-off-white);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 64px 48px 56px;
+      border-bottom: 1px solid var(--whoop-border);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,0,29,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--whoop-red);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 24px; height: 1px;
+      background: var(--whoop-red);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 9vw, 96px);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      color: var(--whoop-off-white);
+      margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--whoop-red); }
+    .hero-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--whoop-muted);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .hero-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+    }
+    .hero-meta-value { font-size: 14px; font-weight: 500; }
+
+    /* ── NAV ── */
+    .nav-strip {
+      display: flex;
+      gap: 0;
+      padding: 0 48px;
+      border-bottom: 1px solid var(--whoop-border);
+      overflow-x: auto;
+      position: sticky;
+      top: 0;
+      background: var(--whoop-black);
+      z-index: 100;
+    }
+    .nav-pill {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      padding: 18px 22px 16px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-pill:hover { color: var(--whoop-off-white); }
+    .nav-pill.active {
+      color: var(--whoop-off-white);
+      border-bottom-color: var(--whoop-red);
+    }
+
+    /* ── SECTIONS ── */
+    .section { display: none; padding: 52px 48px 0; animation: fadeUp 0.3s ease; }
+    .section.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--whoop-red);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 18px; height: 1px;
+      background: var(--whoop-red);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1;
+      color: var(--whoop-off-white);
+      margin-bottom: 36px;
+    }
+
+    /* ── VIDEOS ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .video-card {
+      background: var(--whoop-gray);
+      border: 1px solid var(--whoop-border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .video-card:hover { border-color: rgba(255,255,255,0.18); }
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--whoop-mid);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .video-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(232,0,29,0.0);
+      transition: background 0.2s;
+    }
+    .video-thumb:hover .video-thumb-overlay { background: rgba(232,0,29,0.08); }
+    .play-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--whoop-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .video-thumb:hover .play-btn { transform: scale(1.1); background: var(--whoop-red-dark); }
+    .play-triangle {
+      width: 0; height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 14px solid white;
+      margin-left: 3px;
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 10px; right: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      z-index: 1;
+    }
+    .video-thumb-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      position: relative;
+      z-index: 1;
+    }
+    .video-info { padding: 18px; }
+    .video-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; line-height: 1.4; }
+    .video-desc { font-size: 12px; color: var(--whoop-muted); line-height: 1.55; }
+
+    /* ── VIDEO PLACEHOLDER NOTE ── */
+    .video-note {
+      background: var(--whoop-gray);
+      border: 1px solid var(--whoop-border);
+      border-left: 3px solid var(--whoop-red);
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--whoop-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .video-note strong { color: var(--whoop-off-white); font-weight: 500; }
+
+    /* ── 30-60-90 ── */
+    .phase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--whoop-border);
+      border: 1px solid var(--whoop-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .phase { background: var(--whoop-gray); padding: 32px 26px; }
+    .phase-num {
+      font-family: var(--font-display);
+      font-size: 72px;
+      line-height: 1;
+      color: var(--whoop-red);
+      margin-bottom: 4px;
+    }
+    .phase-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      margin-bottom: 22px;
+    }
+    .phase-theme {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--whoop-off-white);
+      margin-bottom: 18px;
+      line-height: 1.35;
+    }
+    .phase-items { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .phase-item {
+      font-size: 13px;
+      color: var(--whoop-muted);
+      line-height: 1.55;
+      padding-left: 16px;
+      position: relative;
+    }
+    .phase-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 9px;
+      width: 6px; height: 1px;
+      background: var(--whoop-red);
+    }
+
+    /* ── STRATEGY ── */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .strategy-card {
+      background: var(--whoop-gray);
+      border: 1px solid var(--whoop-border);
+      border-radius: 8px;
+      padding: 26px 22px;
+      transition: border-color 0.2s;
+    }
+    .strategy-card:hover { border-color: rgba(255,255,255,0.18); }
+    .strategy-icon {
+      width: 38px; height: 38px;
+      border-radius: 7px;
+      background: rgba(232,0,29,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    .strategy-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--whoop-off-white);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .strategy-card-body { font-size: 13px; color: var(--whoop-muted); line-height: 1.65; }
+    .strategy-stat {
+      margin-top: 16px;
+      font-family: var(--font-display);
+      font-size: 30px;
+      color: var(--whoop-red);
+      line-height: 1;
+    }
+    .strategy-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      margin-top: 3px;
+    }
+
+    /* ── BIO ── */
+    .bio-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: 48px;
+      margin-bottom: 52px;
+    }
+    .bio-avatar {
+      aspect-ratio: 3/4;
+      background: var(--whoop-mid);
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 24px;
+      border: 1px solid var(--whoop-border);
+      position: relative;
+      overflow: hidden;
+    }
+    .bio-avatar-glow {
+      position: absolute;
+      top: 28%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,0,29,0.2) 0%, transparent 70%);
+    }
+    .bio-avatar-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      z-index: 1;
+      text-align: center;
+    }
+    .bio-name {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 60px);
+      line-height: 0.92;
+      color: var(--whoop-off-white);
+      margin-bottom: 8px;
+    }
+    .bio-title-line {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--whoop-red);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .bio-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--whoop-muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .bio-stats {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding-top: 28px;
+      border-top: 1px solid var(--whoop-border);
+    }
+    .bio-stat-num {
+      font-family: var(--font-display);
+      font-size: 40px;
+      color: var(--whoop-off-white);
+      line-height: 1;
+    }
+    .bio-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      margin-top: 3px;
+    }
+
+    .timeline-section-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+      margin-bottom: 16px;
+    }
+    .career-timeline { display: flex; flex-direction: column; }
+    .timeline-item {
+      display: flex;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--whoop-border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--whoop-red);
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .timeline-co { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+    .timeline-role { font-size: 13px; color: var(--whoop-muted); line-height: 1.5; }
+    .timeline-date {
+      font-size: 11px;
+      color: var(--whoop-red);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 80px;
+      padding: 32px 48px;
+      border-top: 1px solid var(--whoop-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left { font-size: 12px; color: var(--whoop-muted); }
+    .footer-left strong { color: var(--whoop-off-white); font-weight: 500; }
+    .footer-right {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--whoop-muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .hero, .footer { padding-left: 24px; padding-right: 24px; }
+      .nav-strip { padding: 0 24px; }
+      .section { padding: 40px 24px 0; }
+      .phase-grid { grid-template-columns: 1fr; }
+      .bio-layout { grid-template-columns: 1fr; }
+      .bio-avatar { aspect-ratio: 16/9; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">VP of Communications · Candidate Application</div>
+    <h1>BUILT FOR<br><span>WHOOP</span></h1>
+    <p class="hero-sub">A communications leader who speaks performance fluently — and builds the systems that move markets, shape culture, and protect the brand under pressure.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Candidate</span>
+        <span class="hero-meta-value">Wendy Covey</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Role</span>
+        <span class="hero-meta-value">VP of Communications</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Prepared</span>
+        <span class="hero-meta-value">April 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAV -->
+  <div class="nav-strip">
+    <button class="nav-pill active" onclick="switchTab('video', this)">Introduction videos</button>
+    <button class="nav-pill" onclick="switchTab('plan', this)">30·60·90 day plan</button>
+    <button class="nav-pill" onclick="switchTab('strategy', this)">Communications strategy</button>
+    <button class="nav-pill" onclick="switchTab('bio', this)">Background</button>
+  </div>
+
+  <!-- VIDEOS -->
+  <div id="tab-video" class="section active">
+    <div class="section-eyebrow">Watch</div>
+    <div class="section-title">Introduction Videos</div>
+
+    <div class="video-note">
+      <strong>To add your videos:</strong> Replace the <code>href="#"</code> on each video card link with your YouTube or Vimeo URL. Or embed directly using an <code>&lt;iframe&gt;</code> inside <code>.video-thumb</code>.
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <a class="video-thumb" href="#" target="_blank" rel="noopener">
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn"><div class="play-triangle"></div></div>
+          <span class="video-thumb-label">Video 1</span>
+          <span class="video-duration">2:30</span>
+        </a>
+        <div class="video-info">
+          <div class="video-title">Why WHOOP, why now</div>
+          <div class="video-desc">My personal connection to the WHOOP mission and what brought me here.</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="#" target="_blank" rel="noopener">
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn"><div class="play-triangle"></div></div>
+          <span class="video-thumb-label">Video 2</span>
+          <span class="video-duration">3:15</span>
+        </a>
+        <div class="video-info">
+          <div class="video-title">Communications philosophy</div>
+          <div class="video-desc">How I think about brand narrative, earned media, and executive voice.</div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="#" target="_blank" rel="noopener">
+          <div class="video-thumb-overlay"></div>
+          <div class="play-btn"><div class="play-triangle"></div></div>
+          <span class="video-thumb-label">Video 3</span>
+          <span class="video-duration">4:00</span>
+        </a>
+        <div class="video-info">
+          <div class="video-title">A campaign I'm proud of</div>
+          <div class="video-desc">Walking through a high-stakes launch — the strategy, the pressure, the outcome.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 30-60-90 -->
+  <div id="tab-plan" class="section">
+    <div class="section-eyebrow">Roadmap</div>
+    <div class="section-title">30 · 60 · 90 Day Plan</div>
+    <div class="phase-grid">
+
+      <div class="phase">
+        <div class="phase-num">30</div>
+        <div class="phase-label">Days — Listen &amp; Map</div>
+        <div class="phase-theme">Understand the landscape before touching it</div>
+        <ul class="phase-items">
+          <li class="phase-item">Shadow every team that touches the brand — product, partnerships, athlete relations, social</li>
+          <li class="phase-item">Audit current PR cadence, agency relationships, and media coverage quality</li>
+          <li class="phase-item">Identify 3–5 under-leveraged story angles sitting in existing data</li>
+          <li class="phase-item">Map executive visibility: where is Will Ahmed showing up vs. where he should be</li>
+          <li class="phase-item">Build trust with comms team — understand what's blocked, what's brewing</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">60</div>
+        <div class="phase-label">Days — Build &amp; Prioritize</div>
+        <div class="phase-theme">Establish infrastructure and a point of view</div>
+        <ul class="phase-items">
+          <li class="phase-item">Deliver a communications strategy brief to leadership — owned, earned, and executive</li>
+          <li class="phase-item">Establish editorial calendar aligned to product roadmap and cultural moments</li>
+          <li class="phase-item">Rationalize agency roster; set clear KPIs and accountability structures</li>
+          <li class="phase-item">Begin media relationship development — top 15 priority journalists and editors</li>
+          <li class="phase-item">Propose framework for crisis communications and spokesperson protocols</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-num">90</div>
+        <div class="phase-label">Days — Activate &amp; Measure</div>
+        <div class="phase-theme">Launch something. Show what this function can do.</div>
+        <ul class="phase-items">
+          <li class="phase-item">Execute first fully owned comms campaign from brief to coverage</li>
+          <li class="phase-item">Deliver monthly comms dashboard to leadership — share of voice, sentiment, tier-1 placements</li>
+          <li class="phase-item">Activate at least one earned media spike tied to a product or data story</li>
+          <li class="phase-item">Present 12-month communications roadmap with resourcing and investment ask</li>
+          <li class="phase-item">Assess team structure and surface any hiring or restructuring recommendations</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div id="tab-strategy" class="section">
+    <div class="section-eyebrow">Thinking</div>
+    <div class="section-title">Communications Strategy</div>
+    <div class="strategy-grid">
+
+      <div class="strategy-card">
+        <div class="strategy-icon">📡</div>
+        <div class="strategy-card-title">Earned media as brand truth</div>
+        <div class="strategy-card-body">WHOOP's credibility lives in third-party validation. The strategy is to feed journalists with irresistible data stories — not press releases — and earn coverage that advertising can't buy.</div>
+        <div class="strategy-stat">Tier 1</div>
+        <div class="strategy-stat-label">target placement standard</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-icon">🎙️</div>
+        <div class="strategy-card-title">Executive voice as a distribution channel</div>
+        <div class="strategy-card-body">Will Ahmed is one of the most credible voices in performance tech. The communications function should systematize that — turning his insights into a programmatic content engine across media, podcasts, and keynotes.</div>
+        <div class="strategy-stat">10×</div>
+        <div class="strategy-stat-label">executive reach potential</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-icon">📊</div>
+        <div class="strategy-card-title">Data as the unfair advantage</div>
+        <div class="strategy-card-body">No fitness platform has WHOOP's longitudinal behavioral data at this scale. A research communications program — peer-reviewed, press-released, and athlete-validated — creates perpetual media gravity.</div>
+        <div class="strategy-stat">300M+</div>
+        <div class="strategy-stat-label">days of member data</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-icon">🏆</div>
+        <div class="strategy-card-title">Athletes as proof points, not just logos</div>
+        <div class="strategy-card-body">The athlete roster is a narrative goldmine that's under-converted. Every partnership should yield a story — not just a photo. Comms should co-own athlete activation with partnerships.</div>
+        <div class="strategy-stat">Elite</div>
+        <div class="strategy-stat-label">sports + enterprise crossover</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-icon">🛡️</div>
+        <div class="strategy-card-title">Crisis readiness as a competitive edge</div>
+        <div class="strategy-card-body">Health data is sensitive. Privacy narratives evolve fast. WHOOP needs a standing playbook, scenario modeling, and a rapid response posture — before an incident, not after.</div>
+        <div class="strategy-stat">24hr</div>
+        <div class="strategy-stat-label">response capability target</div>
+      </div>
+
+      <div class="strategy-card">
+        <div class="strategy-icon">🌍</div>
+        <div class="strategy-card-title">International narrative expansion</div>
+        <div class="strategy-card-body">As WHOOP scales globally, comms must localize without diluting. A tiered market strategy — with flagship stories adapted for regional media landscapes — extends reach without fragmenting brand.</div>
+        <div class="strategy-stat">Global</div>
+        <div class="strategy-stat-label">narrative architecture</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BIO -->
+  <div id="tab-bio" class="section">
+    <div class="section-eyebrow">Background</div>
+    <div class="section-title">Who I Am</div>
+    <div class="bio-layout">
+
+      <div class="bio-avatar">
+        <div class="bio-avatar-glow"></div>
+        <div class="bio-avatar-label">Add your photo here</div>
+      </div>
+
+      <div>
+        <div class="bio-name">WENDY<br>COVEY</div>
+        <div class="bio-title-line">Communications leader · Builder · Storyteller</div>
+        <div class="bio-body">
+          <!-- EDIT: Replace this with your own bio. Two or three paragraphs works well. -->
+          Add your bio here. Speak to your philosophy, your track record, and what draws you to performance brands like WHOOP. Two or three paragraphs in this space reads well — keep it direct, specific, and personal.
+        </div>
+        <div class="bio-stats">
+          <div>
+            <div class="bio-stat-num">25+</div>
+            <div class="bio-stat-label">Years in B2B SaaS</div>
+          </div>
+          <div>
+            <div class="bio-stat-num">12</div>
+            <div class="bio-stat-label">Major launches</div>
+          </div>
+          <div>
+            <div class="bio-stat-num">3</div>
+            <div class="bio-stat-label">Rebrands led</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="timeline-section-label">Career timeline</div>
+    <div class="career-timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-co">Springbrook Software</div>
+          <div class="timeline-role">Incoming CMO — GovTech ERP platform serving 1,800+ local government agencies</div>
+          <div class="timeline-date">2026 – Present</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-co">Comply</div>
+          <div class="timeline-role">CMO — Led marketing through significant growth, a full rebrand, and multiple product launches including a first-in-category AI compliance platform</div>
+          <div class="timeline-date">2023 – 2026</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-co">Marigold (formerly CM Group)</div>
+          <div class="timeline-role">CMO — 67% pipeline growth at 55% lower spend; drove rebrand through multi-brand consolidation</div>
+          <div class="timeline-date">Prior</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-co">Earlier roles</div>
+          <div class="timeline-role">25+ years of B2B and B2B2C SaaS marketing leadership spanning webMethods and beyond</div>
+          <div class="timeline-date">Career foundation</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left"><strong>Wendy Covey</strong> · VP of Communications · WHOOP Application · April 2026</div>
+    <div class="footer-right">Confidential</div>
+  </div>
+
+  <script>
+    function switchTab(id, btn) {
+      document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+      document.querySelectorAll('.nav-pill').forEach(function(p) { p.classList.remove('active'); });
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
